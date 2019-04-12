@@ -54,7 +54,7 @@ public class Tasks {
 	}
 
 	//Hilfsmethode zum Ermitteln der letzten Position des Eintrags in der Sequenz
-	//Gibt -1 zurück, falls kein Eintrag existiert
+	//Gibt -1 zurück, falls kein Eintrag existiert.
 	private int getLastPos(String value) {
 		int pos = -1;
 		for (int i = 0; i < sequence.length; i++) {
