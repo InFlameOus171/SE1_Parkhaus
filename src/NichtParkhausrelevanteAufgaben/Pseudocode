@@ -1,0 +1,22 @@
+Pseudocode
+
+Algorithmus beginnt:
+	für (alle tasks in sequenz, speichere den index für die position in i)
+	wenn der Task aus der Sequenz im Vorgabenstring vorhanden ist, 
+		dann überprüfe alle Tasks aus der Sequenz, die mehr als 0 Tasks als Vorgänger haben
+	
+			falls der Task an Position 0 mehr als 0 Vorgänger hat,
+				dann gib false zurück
+			
+			ansonsten
+				geh durch den Vorgabenstring durch bis du ein vorkommen des Tasks in der Sequenz gefunden hast, 
+				der sich nicht an erster position im Reihenfolgenstring des Vorgabenstrings befindet
+			
+				überprüfe nun ob der Vorgänger des gefundenen Wertes nach der Position in der Sequenz vorkommt
+				falls er vorkommt,
+					dann gib false zurück
+				
+	ansonsten
+		gib false zurück
+
+gib am Ende true zurück

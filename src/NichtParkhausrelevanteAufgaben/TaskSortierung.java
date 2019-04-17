@@ -26,23 +26,26 @@ public class TaskSortierung {
 
 	public boolean isWellSorted(String[] sequence) {
 		for (int i = 0; i < sequence.length; i++) {
-			if (topSort.containsKey(sequence[i]) && topSort.get(sequence[i]) != 0) {
-				if (i == 0) {
-					return false;
-				} else {
-					for (int j = 0; j < tString.length; j++) {
-						for (int k = 1; k < tString[j].length; k++) {
-							if (tString[j][k] == sequence[i] && k > 0) {
-								for (int l = i + 1; l < sequence.length; l++) {
-									if (sequence[l] == tString[j][k - 1]) {
-										return false;
+			if (topSort.containsKey(sequence[i])) {
+				if (topSort.get(sequence[i]) != 0) {
+					if (i == 0) {
+						return false;
+					} else {
+						for (int j = 0; j < tString.length; j++) {
+							for (int k = 1; k < tString[j].length; k++) {
+								if (tString[j][k] == sequence[i] && k > 0) {
+									for (int l = i + 1; l < sequence.length; l++) {
+										if (sequence[l] == tString[j][k - 1]) {
+											return false;
+										}
 									}
 								}
 							}
 						}
 					}
 				}
-
+			} else {
+				return false;
 			}
 		}
 		return true;
