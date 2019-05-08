@@ -1,0 +1,43 @@
+@startuml
+
+left to right direction
+
+skinparam packageStyle rectangle
+
+actor User
+actor Konferenzteilnehmer
+actor HypoBank
+actor EasyCard
+actor CheckVisa
+
+rectangle ConferenceInformationSystem {
+
+    User -- (einloggen)
+    User -- (registrieren)
+    User -- (Konferenz buchen)
+
+    (E-Mail Benachrichtigungen konfigurieren) -- Konferenzteilnehmer : regelmaessige intervalle
+    (E-Mail Benachrichtigungen konfigurieren) <. (Filterregeln festlegen) : <<include>>
+    (E-Mail benachrichtigungen konfigurieren) .> (Visum kontrolle) : <<extends>>
+
+
+    (Konferenz buchen) <|-- (internationale Konferenz buchen)
+    (Konferenz buchen) .> (E-Mail Benachrichtigungen konfigurieren) : <<include>>
+    (Konferenz buchen) <|-- (nationale Konferenz buchen)
+
+    (nationale Konferenz buchen) <. (Konferenzplan) : <<include>>
+    (internationale Konferenz buchen) <. (Konferenzplan) : <<include>>
+
+    (zahlungsmittel waehlen) <|-- (mit Kreditkarte zahlen)
+    (zahlungsmittel waehlen) <. (Konferenz buchen) : <<include>>
+    (zahlungsmittel waehlen) <|-- (per Lastschrift zahlen)
+
+    (mit Kreditkarte zahlen) -- EasyCard
+    (per Lastschrift zahlen) -- HypoBank
+
+    (internationale Konferenz buchen) .> (Visum kontrolle) : <<include>>
+
+    (Visum kontrolle) -- CheckVisa
+}
+
+@enduml
